@@ -1,0 +1,21 @@
+#!/bin/bash
+# assigning user’s input as variable’s value
+echo “ what is your name ?”
+read name
+echo “Welcome, $name”
+
+#!/bin/bash
+# output redirection to a file
+echo “ Please enter the full path of file/directory (ex- /home/dan.new.txt)”
+read path
+for file in $path
+do
+if [ -d “$file” ]
+then
+echo “$file is a directory”
+elif [ -f “$file” ]
+then
+echo “$file is a file”
+else
+echo “No file found”
+done > result.txt
