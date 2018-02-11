@@ -1,0 +1,23 @@
+---
+- hosts: dev
+  vars:
+    remote_user: root
+  tasks:
+    - name: run a script
+      shell: ps -ef |grep -i ssh
+      register: pros
+    - name: show me the content of this script
+      debug: var=pros
+    - name: show me stdout
+      debug: msg={{pros.stdout}}
+    - name: show me if there is any error in this script
+      debug: msg={{pros.stderr}}
+    - name: let let me know if this path exists
+      stat: path=/home/ola/boo
+      register: pitoo
+    - name: show me if this is correct
+      debug: var=pitoo
+    - name: show me error is this path does not exist
+      debug: msg={{pitoo.stat.exists == false}}
+
+
